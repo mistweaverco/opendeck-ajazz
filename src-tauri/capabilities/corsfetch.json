@@ -1,0 +1,7 @@
+{
+	"identifier": "corsfetch",
+	"local": true,
+	"remote": { "urls": ["http://localhost:*"] },
+	"windows": ["*"],
+	"permissions": ["cors-fetch:default"]
+}

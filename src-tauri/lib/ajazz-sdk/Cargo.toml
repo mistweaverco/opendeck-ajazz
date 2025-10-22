@@ -1,0 +1,80 @@
+[package]
+name = "ajazz-sdk"
+description = "HidApi driver for Ajazz devices"
+authors = ["TheJebForge", "mishamyrt"]
+version = "0.2.1"
+edition = "2021"
+readme = "README.md"
+homepage = "https://github.com/mishamyrt/ajazz-sdk"
+repository = "https://github.com/mishamyrt/ajazz-sdk"
+license = "MPL-2.0"
+
+[workspace]
+members = ["examples/*"]
+
+[dependencies]
+tokio = { version = "1", features = ["rt", "macros"], optional = true }
+hidapi = { workspace = true }
+once_cell = { workspace = true }
+thiserror = { workspace = true }
+image = { workspace = true }
+log = "0.4"
+log-panics = "2.1"
+
+[workspace.dependencies]
+hidapi = "2.6"
+image = { version = "0.25.5", default-features = false, features = [
+  "jpeg",
+] }
+once_cell = "1.21.3"
+thiserror = "2.0.12"
+
+[features]
+async = [
+  "tokio",
+  "tokio/sync",
+  "tokio/rt-multi-thread",
+  "tokio/time"
+]
+tokio = ["dep:tokio"]
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -2 }
+# Allowed pedantic lints
+char_lit_as_u8 = "allow"
+collapsible_else_if = "allow"
+collapsible_if = "allow"
+implicit_hasher = "allow"
+map_unwrap_or = "allow"
+match_same_arms = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+similar_names = "allow"
+single_match_else = "allow"
+too_many_lines = "allow"
+# Without the hashes we run into a `rustfmt` bug in some snapshot tests, see #13250
+needless_raw_string_hashes = "allow"
+# Disallowed restriction lints
+print_stdout = "warn"
+print_stderr = "warn"
+dbg_macro = "warn"
+empty_drop = "warn"
+empty_structs_with_brackets = "warn"
+exit = "warn"
+get_unwrap = "warn"
+rc_buffer = "warn"
+rc_mutex = "warn"
+rest_pat_in_fully_bound_structs = "warn"
+# nursery rules
+redundant_clone = "warn"
+debug_assert_with_mut_call = "warn"
+unused_peekable = "warn"
+
+# Diagnostics are not actionable: Enable once https://github.com/rust-lang/rust-clippy/issues/13774 is resolved.
+large_stack_arrays = "allow"

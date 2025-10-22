@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>opendeck-ajazz</id>
+
+	<name>opendeck-ajazz</name>
+	<summary>Use ajazz stream controllers on Linux</summary>
+	<developer id="com.mistweaverco"><name>mistweaverco</name></developer>
+	<launchable type="desktop-id">opendeck-ajazz.desktop</launchable>
+
+	<url type="vcs-browser">https://github.com/mistweaverco/opendeck-ajazz</url>
+	<url type="homepage">https://opendeck.mwco.app</url>
+	<url type="bugtracker">https://github.com/mistweaverco/opendeck-ajazz/issues</url>
+	<url type="faq">https://github.com/nmistweavercoopendeck-ajazz?tab=readme-ov-file#supported-devices</url>
+	<url type="contribute">https://github.com/mistweaverco/opendeck-ajazz?tab=readme-ov-file#contributing</url>
+	<url type="donation">https://github.com/sponsors/gorillamoe</url>
+	<url type="contact">https://mistweaverco.com/discord</url>
+
+	<metadata_license>CC-BY-SA-4.0</metadata_license>
+	<project_license>GPL-3.0-or-later</project_license>
+	<content_rating type="oars-1.1" />
+
+	<description>
+		<p>Linux software for your Ajazz stream controller devices.</p>
+		<p>Hard-fork of OpenDeck with support for Ajazz devices.</p>
+		<p>Please note that you will need to install udev subsystem rules for your device to be detected. For more information, see the Installation section of the project README on GitHub.</p>
+		<p>Many plugins are not compiled for Linux, so you may need to have Wine (and Wine Mono) installed on your system (natively, as the Wine Flatpak is not supported).</p>
+	</description>
+
+	<screenshots>
+		<screenshot type="default">
+      <image>https://raw.githubusercontent.com/mistweaverco/opendeck-ajazz/refs/heads/main/assets/logo.png</image>
+		</screenshot>
+	</screenshots>
+
+	<branding>
+		<color type="primary" scheme_preference="light">#62a0ea</color>
+		<color type="primary" scheme_preference="dark">#1a5fb4</color>
+	</branding>
+
+	<releases>
+		<release version="0.1.0" date="2025-10-22">
+			<url type="details">https://github.com/mistweaverco/opendeck-ajazz/releases/tag/v0.1.0</url>
+			<description>
+				<ul>
+					<li>Inital release</li>
+				</ul>
+			</description>
+		</release>
+	</releases>
+</component>

@@ -1,0 +1,12 @@
+[package]
+name = "pizza"
+version = "0.0.0"
+publish = false
+authors = ["mishamyrt"]
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", optional = false, features = ["full"] }
+async-recursion = { version = "1.0.2", optional = false }
+image = { workspace = true }
+ajazz-sdk = { path = "../../", features = ["async"]}

@@ -1,0 +1,37 @@
+{
+	"name": "opendeck-ajazz",
+	"version": "0.1.0",
+	"description": "Use stream controllers",
+	"author": "mistweaverco and friends",
+	"license": "GPL-3.0-or-later",
+	"repository": "https://github.com/mistweaverco/opendeck-ajazz",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"tauri": "tauri"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "^3.0",
+		"@sveltejs/kit": "^2.21",
+		"@sveltejs/vite-plugin-svelte": "^3.1",
+		"@tailwindcss/vite": "^4.1",
+		"@tauri-apps/cli": "^2.5",
+		"lightningcss": "^1.30",
+		"svelte": "^4.2",
+		"svelte-check": "^4.2",
+		"tailwindcss": "^4.1",
+		"typescript": "^5.8",
+		"vite": "^5.4"
+	},
+	"type": "module",
+	"dependencies": {
+		"@tauri-apps/api": "^2.5",
+		"@tauri-apps/plugin-deep-link": "^2.3",
+		"@tauri-apps/plugin-dialog": "^2.2",
+		"dompurify": "^3.2",
+		"marked": "^15.0",
+		"marked-base-url": "^1.1",
+		"phosphor-svelte": "^2.0"
+	}
+}

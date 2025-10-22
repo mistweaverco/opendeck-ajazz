@@ -1,0 +1,12 @@
+[package]
+name = "screen_mirroring"
+version = "0.0.0"
+publish = false
+authors = ["mishamyrt"]
+edition = "2021"
+
+[dependencies]
+image = { workspace = true }
+ajazz-sdk = { path = "../../" }
+scap = "0.0.8"
+rustyline = "14.0"
