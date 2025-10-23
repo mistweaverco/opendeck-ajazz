@@ -75,6 +75,7 @@ clone_file_new_name() {
   local file="$1"
   local new_name
   new_name="$(dirname "$file")/$(strip_version_from_filename "$file")"
+  cp "$file" "$new_name"
   echo "$new_name"
 }
 
