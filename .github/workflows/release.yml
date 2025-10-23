@@ -53,7 +53,6 @@ jobs:
             librsvg2-dev patchelf \
             libudev-dev xdg-utils
 
-      - uses: tauri-apps/tauri-action@v0
       - name: Build Tauri App
         run: |
           NO_STRIP=true deno task tauri build
