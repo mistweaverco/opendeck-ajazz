@@ -1,0 +1,38 @@
+---
+name: Lint app
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/lint-app.sh'
+      - 'src-tauri/**'
+      - 'src/**'
+    branches:
+      - main
+    types: ["labeled", "opened", "synchronize", "reopened"]
+
+jobs:
+  lint-app:
+    name: Lint app
+    runs-on: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
+    env:
+      DENO_DIR: deno_cache
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cache Deno dependencies
+        uses: actions/cache@v4
+        with:
+          path: deno_cache
+          key: linux-app-deno-${{ hashFiles('deno.lock') }}
+          restore-keys: |
+            linux-app-deno-${{ hashFiles('deno.lock') }}
+
+      - name: Install frontend dependencies
+        run: deno install
+
+      - name: Lint app
+        run: ./scripts/lint-app.sh
