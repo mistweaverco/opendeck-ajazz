@@ -9,16 +9,56 @@ jobs:
   create-release:
     name: Create Release
     runs-on: ubuntu-latest
+    env:
+      DENO_DIR: deno_cache
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Set up env
         run: |
           VERSION=${GITHUB_REF_NAME#v}
           echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x
+
+      - name: Cache Deno dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.DENO_DIR }}
+          key: ${{ hashFiles('deno.lock') }}
+
+      - name: Install frontend dependencies
+        run: deno install
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev \
+            libappindicator3-dev \
+            librsvg2-dev patchelf \
+            libudev-dev xdg-utils
+
+      - uses: tauri-apps/tauri-action@v0
+      - name: Build Tauri App
+        run: |
+          NO_STRIP=true deno task tauri build
+
       - name: Create Release
-        run: ./scripts/release.sh
+        run: PLATFORM=linux ./scripts/release.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
