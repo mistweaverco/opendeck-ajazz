@@ -14,12 +14,18 @@ concurrency:
   group: 'create-release'
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   create-release:
     name: Create Release
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     env:
       DENO_DIR: deno_cache
     steps:

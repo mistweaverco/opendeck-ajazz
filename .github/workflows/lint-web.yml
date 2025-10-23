@@ -10,12 +10,18 @@ on:
       - main
     types: ["opened", "synchronize", "reopened"]
 
+permissions:
+  contents: read
+
 jobs:
   lint-web:
     name: Lint web
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     env:
       DENO_DIR: deno_cache
     steps:

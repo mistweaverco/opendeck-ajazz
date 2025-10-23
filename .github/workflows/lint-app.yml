@@ -15,8 +15,13 @@ jobs:
   lint-app:
     name: Lint app
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     container:
       image: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     env:
       DENO_DIR: deno_cache
     steps:
