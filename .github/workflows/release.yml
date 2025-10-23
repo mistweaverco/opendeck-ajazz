@@ -17,7 +17,9 @@ concurrency:
 jobs:
   create-release:
     name: Create Release
-    runs-on: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
     env:
       DENO_DIR: deno_cache
     steps:

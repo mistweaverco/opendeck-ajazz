@@ -28,7 +28,9 @@ permissions:
 jobs:
   build-linux:
     name: Deploy website
-    runs-on: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
