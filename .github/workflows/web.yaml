@@ -50,7 +50,7 @@ jobs:
       - name: Install dependencies
         run: cd web && bun install --frozen-lockfile
       - name: Create Website
-        run: cd web && bun run build --frozen-lockfile
+        run: cd web && bun run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
