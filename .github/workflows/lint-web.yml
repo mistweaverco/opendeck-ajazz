@@ -1,0 +1,37 @@
+---
+name: Lint web
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/lint-web.sh'
+      - 'web/**'
+    branches:
+      - main
+    types: ["opened", "synchronize", "reopened"]
+
+jobs:
+  lint-web:
+    name: Lint web
+    runs-on: ghcr.io/mistweaverco/opendeck-ajazz-ci:latest
+    env:
+      DENO_DIR: deno_cache
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cache Bun
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: linux-web-bun-${{ hashFiles('web/bun.lock') }}
+          restore-keys: |
+            linux-web-bun-${{ hashFiles('web/bun.lock') }}
+
+      - name: Install web dependencies
+        run: cd web && bun install --frozen-lockfile
+
+      - name: Lint web
+        run: ./scripts/lint-web.sh
