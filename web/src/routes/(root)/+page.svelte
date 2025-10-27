@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fortawesome/fontawesome-free/css/all.css';
 	import Prism from 'prismjs';
 	import 'prismjs/plugins/toolbar/prism-toolbar';
 	import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
@@ -73,6 +74,13 @@
 			<img src="/logo.svg" alt="opendeck-ajazz logo" class="m-5 mx-auto w-64" />
 			<h1 class="text-5xl font-bold">opendeck-ajazz</h1>
 			<p class="py-6">Linux software for your Ajazz stream controller devices.</p>
+			<div role="alert" class="alert alert-info mb-5">
+				<i class="fa fa-info" aria-hidden="true"></i>
+				<span
+					>The <a href="https://github.com/nekename/OpenDeck">OG OpenDeck</a> supports Ajazz devices
+					via plugins.</span
+				>
+			</div>
 			<a href="#install" on:click={handleAnchorClick}
 				><button class="btn btn-primary">Get Started</button></a
 			>

@@ -20,6 +20,9 @@ support for Ajazz devices.
 
 </div>
 
+> [!NOTE]
+> The [OG OpenDeck](https://github.com/nekename/OpenDeck) supports Ajazz devices via plugins.
+
 ## Supported devices
 
 - Ajazz AKP153
